@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff6eb" />
+    <meta
+      name="description"
+      content="写给赵清恬十一岁的生日祝福：愿生活永远如意，心情永远阳光。"
+    />
+    <title>赵清恬 · 11岁生日快乐</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=6" />
+  </head>
+  <body class="intro-locked">
+    <section class="gift-opening" id="giftOpening" aria-label="打开生日礼物">
+      <div class="opening-sparkles" aria-hidden="true"><i>✦</i><i>✦</i><i>●</i><i>✦</i><i>●</i></div>
+      <div class="opening-copy">
+        <p>嘘——有一份特别的礼物</p>
+        <h1>送给十一岁的你</h1>
+      </div>
+      <button class="gift-box" id="giftBox" type="button" aria-label="点击打开生日礼物">
+        <span class="gift-lid"><i></i></span>
+        <span class="gift-body"><i></i></span>
+        <span class="gift-tag">CLICK<br /><b>打开礼物</b></span>
+      </button>
+      <div class="surprise-card" aria-hidden="true">
+        <span>♥</span>
+        <small>A BIRTHDAY CARD FOR</small>
+        <strong>赵清恬</strong>
+        <p>十一岁生日贺卡</p>
+      </div>
+      <p class="opening-hint">轻轻点一下礼盒</p>
+    </section>
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="mini-brand" href="#home" aria-label="回到首页">
+        <span class="brand-dot"></span>
+        <span>QINGTIAN · 11</span>
+      </a>
+      <div class="top-actions">
+        <span class="chapter-indicator" aria-live="polite">01 / 05</span>
+        <button class="music-button" id="musicButton" type="button" aria-pressed="false">
+          <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span id="musicLabel">打开歌词生日歌</span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="music-dock" id="musicDock" aria-label="海底捞生日歌播放器">
+      <div class="music-dock-head">
+        <div><small>NOW PLAYING</small><strong>《生日祝福歌》· 海底捞官方 MV</strong></div>
+        <button id="minimizeMusic" type="button" aria-label="收起播放器">—</button>
+      </div>
+      <div class="video-frame">
+        <iframe
+          id="birthdayPlayer"
+          title="海底捞《生日祝福歌》歌词视频"
+          data-src="https://player.bilibili.com/player.html?bvid=BV1zg4y1x7zp&page=1&autoplay=1&high_quality=1&danmaku=0"
+          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p>连续演唱版 · 可在播放器中暂停或调节音量</p>
+    </aside>
+
+    <nav class="dot-nav" aria-label="页面章节">
+      <a class="active" href="#home" aria-label="生日首页"></a>
+      <a href="#eleven" aria-label="十一岁的你"></a>
+      <a href="#stars" aria-label="成长的七颗星"></a>
+      <a href="#support" aria-label="勇敢向前"></a>
+      <a href="#wish" aria-label="生日祝福"></a>
+    </nav>
+
+    <main>
+      <section class="scene hero" id="home" data-chapter="01 / 05">
+        <div class="hero-orbit" aria-hidden="true">
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+          <span class="orbit-star star-a">✦</span>
+          <span class="orbit-star star-b">✦</span>
+          <span class="orbit-star star-c">●</span>
+        </div>
+
+        <div class="hero-copy reveal">
+          <p class="eyebrow">TO OUR SHINING GIRL</p>
+          <h1><span>十一岁，</span><em>正闪闪发光。</em></h1>
+          <p class="hero-name">赵清恬 · 生日快乐</p>
+          <button class="primary-button" id="startButton" type="button">
+            <span>开启十一岁的礼物</span><b aria-hidden="true">↓</b>
+          </button>
+        </div>
+
+        <div class="hero-number reveal" aria-label="11岁">
+          <span>1</span><span>1</span>
+          <small>YEARS OF WONDER</small>
+        </div>
+
+        <button class="floating-balloon balloon-one" type="button" aria-label="点开彩色气球">11</button>
+        <button class="floating-balloon balloon-two" type="button" aria-label="点开彩色气球">♥</button>
+        <p class="scroll-note">向下滑，收集成长的星光</p>
+      </section>
+
+      <section class="scene eleven" id="eleven" data-chapter="02 / 05">
+        <div class="section-heading reveal">
+          <p class="eyebrow">CHAPTER ONE · 独一无二</p>
+          <h2>11岁的你，<br /><em>与众不同。</em></h2>
+        </div>
+
+        <div class="portrait-card reveal">
+          <div class="portrait-sun" aria-hidden="true"></div>
+          <div class="girl-illustration" aria-hidden="true">
+            <span class="girl-head"></span>
+            <span class="girl-hair"></span>
+            <span class="girl-body"></span>
+            <span class="girl-book">书</span>
+          </div>
+          <div class="portrait-stamp">11<br /><small>向阳生长</small></div>
+          <p>认真生活的每一天，<br />都在悄悄长成更好的自己。</p>
+        </div>
+
+        <div class="quality-ticker" aria-label="清恬的闪光点">
+          <div>
+            <span>围棋大师</span><i>✦</i><span>坚持跳绳</span><i>✦</i><span>爱护视力</span><i>✦</i><span>心灵手巧</span><i>✦</i><span>学习刻苦</span><i>✦</i>
+            <span>围棋大师</span><i>✦</i><span>坚持跳绳</span><i>✦</i><span>爱护视力</span><i>✦</i><span>心灵手巧</span><i>✦</i><span>学习刻苦</span><i>✦</i>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene stars" id="stars" data-chapter="03 / 05">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow">SEVEN LITTLE CONSTELLATIONS</p>
+          <h2>成长的七颗星</h2>
+          <p class="section-lead">每一份坚持，都有光。点击卡片，看看藏在里面的小祝福。</p>
+        </div>
+
+        <div class="star-grid">
+          <button class="star-card rope reveal" type="button" data-wish="一下一下，跳出健康与勇气！">
+            <span class="card-index">01</span><span class="card-icon rope-icon" aria-hidden="true">⌒</span>
+            <strong>跳绳</strong><small>坚持，是会发光的超能力</small>
+          </button>
+          <button class="star-card growth reveal" type="button" data-wish="向着阳光，好好吃饭，好好长大！">
+            <span class="card-index">02</span><span class="card-icon" aria-hidden="true">↟</span>
+            <strong>长高</strong><small>今天也比昨天更接近云朵</small>
+          </button>
+          <button class="star-card go reveal" type="button" data-wish="落子有思，心中有天地。小小棋手，未来可期！">
+            <span class="card-index">03</span><span class="card-icon go-board" aria-hidden="true"><i></i><i></i><i></i></span>
+            <strong>围棋</strong><small>黑白之间，是聪慧也是沉着</small>
+          </button>
+          <button class="star-card eyes reveal" type="button" data-wish="窗外很远，书香很近，记得让眼睛常常休息。">
+            <span class="card-index">04</span><span class="card-icon eye-icon" aria-hidden="true">◉</span>
+            <strong>视力保护</strong><small>抬头看看远方，收藏清晰世界</small>
+          </button>
+          <button class="star-card reading reveal" type="button" data-wish="热爱童话、玄幻、短剧的你，是最本真的你。不辜负每一份热爱！">
+            <span class="card-index">05</span><span class="card-icon" aria-hidden="true">▤</span>
+            <strong>阅读与热爱</strong><small>爱好是人的一部分，童话、玄幻与短剧，都是本真的你</small>
+          </button>
+          <button class="star-card craft reveal" type="button" data-wish="把奇思妙想做成真的，你的小手拥有魔法！">
+            <span class="card-index">06</span><span class="card-icon" aria-hidden="true">✂</span>
+            <strong>手工</strong><small>心灵手巧，让想象有了形状</small>
+          </button>
+          <button class="star-card award reveal" type="button" data-wish="每张奖状，都记得你努力过的模样。">
+            <span class="card-index">07</span><span class="card-icon" aria-hidden="true">✺</span>
+            <strong>奖状</strong><small>为认真鼓掌，也为进步喝彩</small>
+          </button>
+        </div>
+
+        <div class="wish-toast" id="wishToast" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="scene support" id="support" data-chapter="04 / 05">
+        <div class="support-path" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="support-copy reveal">
+          <p class="eyebrow">BRAVE HEART, BRIGHT ROAD</p>
+          <h2>你做得<br /><em>非常棒！</em></h2>
+          <p>愿你前方无畏向前，<br />家庭会成为你最坚实的支柱。</p>
+        </div>
+        <div class="support-visual reveal" aria-label="家人托起一颗星的插画">
+          <div class="big-star">★</div>
+          <div class="hands"><span></span><span></span></div>
+          <div class="orbit-words"><span>勇敢</span><span>好奇</span><span>善良</span><span>坚持</span></div>
+        </div>
+      </section>
+
+      <section class="scene wish" id="wish" data-chapter="05 / 05">
+        <div class="final-intro reveal">
+          <p class="eyebrow">THE GRAND FINALE</p>
+          <h2>祝赵清恬<br /><em>生日快乐！</em></h2>
+          <p>最后，还有一个藏在名字里的祝福。</p>
+        </div>
+
+        <div class="character-stage reveal" id="characterStage">
+          <p class="stage-guide">点击“交换偏旁”，让名字施展一次魔法</p>
+          <div class="character-equation" aria-label="清恬二字交换偏旁变成活情">
+            <div class="character-block qing">
+              <span class="radical water">氵</span><span class="part blue">青</span>
+              <small>清</small>
+            </div>
+            <span class="equation-and">＋</span>
+            <div class="character-block tian">
+              <span class="radical heart">忄</span><span class="part tongue">舌</span>
+              <small>恬</small>
+            </div>
+          </div>
+          <button class="swap-button" id="swapButton" type="button"><span>交换偏旁</span><b>↔</b></button>
+          <div class="transformed-words" aria-live="polite">
+            <span>活</span><i>&amp;</i><span>情</span>
+          </div>
+        </div>
+
+        <div class="final-blessing reveal" id="finalBlessing">
+          <p>祝恬果</p>
+          <h3>生活永远如意，<br />心情永远阳光。</h3>
+          <div class="live-love">Live <span>&amp;</span> Love</div>
+          <p class="everyday">爱上生活的每一天！</p>
+          <button class="celebrate-button" id="celebrateButton" type="button">再放一次生日礼花 ✦</button>
+        </div>
+
+        <footer><span>MADE WITH LOVE</span><i>♥</i><span>FOR QINGTIAN · AGE 11</span></footer>
+      </section>
+    </main>
+
+    <script src="script.js?v=5"></script>
+  </body>
+</html>
+
