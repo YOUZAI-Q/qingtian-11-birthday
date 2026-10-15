@@ -101,24 +101,30 @@ function playCelebrationSound() {
 
   const start = context.currentTime + .03;
   const master = context.createGain();
+  const fireworksMix = context.createGain();
+  const cheersMix = context.createGain();
   const compressor = context.createDynamicsCompressor();
   master.gain.setValueAtTime(.0001, start);
-  master.gain.exponentialRampToValueAtTime(.72, start + .05);
+  master.gain.exponentialRampToValueAtTime(1, start + .05);
   master.gain.exponentialRampToValueAtTime(.0001, start + 4.6);
-  compressor.threshold.value = -14;
-  compressor.knee.value = 16;
-  compressor.ratio.value = 9;
+  fireworksMix.gain.value = 2.4;
+  cheersMix.gain.value = .62;
+  compressor.threshold.value = -7;
+  compressor.knee.value = 10;
+  compressor.ratio.value = 7;
   compressor.attack.value = .004;
   compressor.release.value = .24;
+  fireworksMix.connect(master);
+  cheersMix.connect(master);
   master.connect(compressor).connect(context.destination);
 
   [0, .48, 1.08].forEach((delay, index) => {
-    fireworkLaunch(context, master, start + delay);
-    fireworkBurst(context, master, start + delay + .34, index);
+    fireworkLaunch(context, fireworksMix, start + delay);
+    fireworkBurst(context, fireworksMix, start + delay + .34, index);
   });
 
   [0, .14, .28, .5, .72, .94].forEach((delay, index) => {
-    cheerVoice(context, master, start + .42 + delay, index);
+    cheerVoice(context, cheersMix, start + .42 + delay, index);
   });
 }
 
