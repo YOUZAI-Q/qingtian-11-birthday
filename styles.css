@@ -131,11 +131,15 @@ h1 em,h2 em { color: var(--coral); font-weight: 400; }
 .portrait-card { position: relative; min-height: 550px; border: 2px solid var(--ink); border-radius: 50% 50% 8px 8px; background: var(--paper); box-shadow: 18px 18px 0 var(--coral); overflow: hidden; }
 .portrait-sun { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: var(--gold); top: 65px; left: 50%; transform: translateX(-50%); }
 .girl-illustration { position: absolute; width: 240px; height: 380px; left: 50%; top: 90px; transform: translateX(-50%); }
+.girl-bun { position:absolute; z-index:4; left:96px; top:-10px; width:52px; height:52px; border:2px solid var(--ink); border-radius:50%; background:var(--ink); box-shadow:inset 10px -6px 0 rgba(255,255,255,.09); }
+.girl-bun::after { content:""; position:absolute; left:15px; bottom:-9px; width:20px; height:15px; border-radius:50%; background:var(--pink); border:2px solid var(--ink); }
 .girl-head { position: absolute; left: 69px; top: 35px; width: 105px; height: 120px; background: #f3c7a2; border: 2px solid var(--ink); border-radius: 50%; z-index: 2; }
 .girl-head::before,.girl-head::after { content:""; position:absolute; width:7px; height:10px; border-radius:50%; background:var(--ink); top:54px; }
 .girl-head::before { left:28px; }.girl-head::after{right:28px;}
 .girl-hair { position: absolute; z-index:3; left:58px; top:18px; width:130px; height:82px; border-radius: 65px 65px 25px 25px; background: var(--ink); clip-path: polygon(0 0,100% 0,100% 70%,82% 50%,65% 76%,46% 48%,25% 72%,0 51%); }
-.girl-body { position: absolute; left: 40px; top: 143px; width: 160px; height: 220px; border:2px solid var(--ink); border-radius: 52% 52% 20px 20px; background: var(--teal); }
+.girl-body { position: absolute; left: 40px; top: 143px; width: 160px; height: 220px; border:2px solid var(--ink); border-radius: 52% 52% 20px 20px; background:linear-gradient(180deg,#fffdf9 0 43%,var(--pink) 43% 100%); box-shadow:inset 0 -18px 0 rgba(243,111,94,.16); }
+.girl-body::before { content:""; position:absolute; left:50%; top:12px; width:42px; height:24px; transform:translateX(-50%); border:2px solid var(--coral); border-top:0; border-radius:0 0 24px 24px; background:var(--pink); }
+.girl-body::after { content:""; position:absolute; left:18px; right:18px; top:88px; height:3px; background:var(--coral); box-shadow:0 8px 0 rgba(255,255,255,.72); }
 .girl-book { position:absolute; z-index:4; left:52px; top:220px; width:136px; height:95px; display:grid; place-items:center; border:2px solid var(--ink); background:var(--cream); font:46px var(--serif); transform:rotate(-4deg); box-shadow:5px 5px 0 var(--coral); }
 .portrait-card > p { position:absolute; z-index:5; left:28px; bottom:20px; margin:0; font-size:14px; line-height:1.8; }
 .portrait-stamp { position:absolute; z-index:5; right:20px; top:35px; width:90px; height:90px; display:grid; place-items:center; padding-top:8px; border:2px solid var(--coral); color:var(--coral); border-radius:50%; font:42px/0.6 var(--serif); transform:rotate(10deg); text-align:center; }
@@ -165,8 +169,8 @@ h1 em,h2 em { color: var(--coral); font-weight: 400; }
 .wish-toast { position:fixed; z-index:40; left:50%; bottom:28px; transform:translate(-50%,30px); padding:15px 22px; border:1px solid var(--ink); border-radius:999px; color:white; background:var(--ink); opacity:0; pointer-events:none; transition:.35s; text-align:center; }
 .wish-toast.show { opacity:1; transform:translate(-50%,0); }
 
-.support { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:7vw; background:var(--teal); color:var(--cream); }
-.support .eyebrow { color:var(--gold); }.support h2 em{color:var(--gold)}
+.support { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:7vw; background:var(--pink); color:var(--ink); }
+.support .eyebrow { color:var(--teal); }.support h2 em{color:var(--coral)}
 .support-copy > p:last-child { font-size:clamp(20px,2vw,30px); line-height:1.8; }
 .support-visual { position:relative; min-height:560px; display:grid; place-items:center; }
 .big-star { position:relative; z-index:2; color:var(--gold); font-size:330px; line-height:1; filter:drop-shadow(10px 14px 0 rgba(0,0,0,.18)); animation:pulse 2.4s ease-in-out infinite; }
@@ -176,6 +180,7 @@ h1 em,h2 em { color: var(--coral); font-weight: 400; }
 .hands span:last-child { transform:scaleX(-1) rotate(-24deg); }
 .orbit-words span { position:absolute; padding:8px 14px; border:1px solid currentColor; border-radius:999px; font-size:12px; letter-spacing:.2em; }
 .orbit-words span:nth-child(1){left:5%;top:20%}.orbit-words span:nth-child(2){right:0;top:30%}.orbit-words span:nth-child(3){left:10%;bottom:20%}.orbit-words span:nth-child(4){right:8%;bottom:14%}
+.support-path { position:absolute; inset:0; pointer-events:none; }
 .support-path i { position:absolute; width:8px; height:8px; border-radius:50%; background:var(--gold); opacity:.55; }
 .support-path i:nth-child(1){left:4%;top:18%}.support-path i:nth-child(2){left:34%;top:12%}.support-path i:nth-child(3){left:52%;bottom:17%}.support-path i:nth-child(4){right:7%;top:10%}.support-path i:nth-child(5){left:18%;bottom:8%}
 
