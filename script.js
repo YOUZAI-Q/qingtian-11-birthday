@@ -84,9 +84,137 @@ swapButton.addEventListener('click', () => {
 });
 
 document.querySelector('#celebrateButton').addEventListener('click', () => {
+  playCelebrationSound();
   burst(window.innerWidth * .2, window.innerHeight * .25, 70);
   setTimeout(() => burst(window.innerWidth * .8, window.innerHeight * .3, 70), 280);
 });
+
+let celebrationAudioContext;
+
+function playCelebrationSound() {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+
+  celebrationAudioContext ||= new AudioContext();
+  const context = celebrationAudioContext;
+  if (context.state === 'suspended') context.resume();
+
+  const start = context.currentTime + .03;
+  const master = context.createGain();
+  const compressor = context.createDynamicsCompressor();
+  master.gain.setValueAtTime(.0001, start);
+  master.gain.exponentialRampToValueAtTime(.72, start + .05);
+  master.gain.exponentialRampToValueAtTime(.0001, start + 4.6);
+  compressor.threshold.value = -14;
+  compressor.knee.value = 16;
+  compressor.ratio.value = 9;
+  compressor.attack.value = .004;
+  compressor.release.value = .24;
+  master.connect(compressor).connect(context.destination);
+
+  [0, .48, 1.08].forEach((delay, index) => {
+    fireworkLaunch(context, master, start + delay);
+    fireworkBurst(context, master, start + delay + .34, index);
+  });
+
+  [0, .14, .28, .5, .72, .94].forEach((delay, index) => {
+    cheerVoice(context, master, start + .42 + delay, index);
+  });
+}
+
+function fireworkLaunch(context, output, time) {
+  const oscillator = context.createOscillator();
+  const gain = context.createGain();
+  oscillator.type = 'sine';
+  oscillator.frequency.setValueAtTime(320, time);
+  oscillator.frequency.exponentialRampToValueAtTime(1180, time + .3);
+  gain.gain.setValueAtTime(.0001, time);
+  gain.gain.exponentialRampToValueAtTime(.13, time + .04);
+  gain.gain.exponentialRampToValueAtTime(.0001, time + .32);
+  oscillator.connect(gain).connect(output);
+  oscillator.start(time);
+  oscillator.stop(time + .34);
+}
+
+function fireworkBurst(context, output, time, variant) {
+  const duration = 1.15;
+  const buffer = context.createBuffer(1, context.sampleRate * duration, context.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < data.length; i += 1) {
+    const fade = Math.pow(1 - i / data.length, 2.7);
+    data[i] = (Math.random() * 2 - 1) * fade;
+  }
+
+  const noise = context.createBufferSource();
+  const filter = context.createBiquadFilter();
+  const gain = context.createGain();
+  noise.buffer = buffer;
+  filter.type = 'lowpass';
+  filter.frequency.setValueAtTime(1700 + variant * 420, time);
+  filter.frequency.exponentialRampToValueAtTime(190, time + duration);
+  gain.gain.setValueAtTime(.52, time);
+  gain.gain.exponentialRampToValueAtTime(.0001, time + duration);
+  noise.connect(filter).connect(gain).connect(output);
+  noise.start(time);
+
+  const boom = context.createOscillator();
+  const boomGain = context.createGain();
+  boom.type = 'sine';
+  boom.frequency.setValueAtTime(92 + variant * 11, time);
+  boom.frequency.exponentialRampToValueAtTime(34, time + .72);
+  boomGain.gain.setValueAtTime(.62, time);
+  boomGain.gain.exponentialRampToValueAtTime(.0001, time + .78);
+  boom.connect(boomGain).connect(output);
+  boom.start(time);
+  boom.stop(time + .8);
+
+  for (let i = 0; i < 12; i += 1) {
+    const spark = context.createOscillator();
+    const sparkGain = context.createGain();
+    const sparkTime = time + .05 + Math.random() * .82;
+    spark.type = 'square';
+    spark.frequency.setValueAtTime(900 + Math.random() * 2600, sparkTime);
+    sparkGain.gain.setValueAtTime(.035 + Math.random() * .035, sparkTime);
+    sparkGain.gain.exponentialRampToValueAtTime(.0001, sparkTime + .035 + Math.random() * .07);
+    spark.connect(sparkGain).connect(output);
+    spark.start(sparkTime);
+    spark.stop(sparkTime + .12);
+  }
+}
+
+function cheerVoice(context, output, time, index) {
+  const oscillator = context.createOscillator();
+  const overtone = context.createOscillator();
+  const filter = context.createBiquadFilter();
+  const gain = context.createGain();
+  const base = 245 + index * 24;
+  const length = 1.55 + (index % 3) * .18;
+
+  oscillator.type = 'sawtooth';
+  overtone.type = 'sine';
+  oscillator.frequency.setValueAtTime(base, time);
+  oscillator.frequency.exponentialRampToValueAtTime(base * 1.85, time + .42);
+  oscillator.frequency.exponentialRampToValueAtTime(base * 1.42, time + length);
+  overtone.frequency.setValueAtTime(base * 2.01, time);
+  overtone.frequency.exponentialRampToValueAtTime(base * 3.25, time + .42);
+  overtone.frequency.exponentialRampToValueAtTime(base * 2.65, time + length);
+
+  filter.type = 'bandpass';
+  filter.frequency.value = 1050 + index * 55;
+  filter.Q.value = 1.2;
+  gain.gain.setValueAtTime(.0001, time);
+  gain.gain.exponentialRampToValueAtTime(.055, time + .16);
+  gain.gain.setValueAtTime(.045, time + .7);
+  gain.gain.exponentialRampToValueAtTime(.0001, time + length);
+
+  oscillator.connect(filter);
+  overtone.connect(filter);
+  filter.connect(gain).connect(output);
+  oscillator.start(time);
+  overtone.start(time);
+  oscillator.stop(time + length);
+  overtone.stop(time + length);
+}
 
 function burst(x, y, count = 50) {
   const colors = ['#f36f5e', '#f5a340', '#ffd361', '#176f6c', '#3468b2', '#f6b7c2'];
